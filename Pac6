@@ -1,0 +1,176 @@
+//M03A UF2 PAC6 MARCOS FABIEN
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int opcion = 0;
+            opcion = Menu();
+            Console.Clear();
+
+            if (opcion == 1)
+            {
+                MatrizFacil();
+                Console.WriteLine("Introduzca las posiciones :");
+                Console.ReadLine();
+
+            }
+            if (opcion == 2)
+            {
+
+            }
+            if (opcion == 3)
+            {
+
+            }
+            if (opcion == 4)
+            {
+
+            }
+        }
+
+
+        static int Menu()
+        {
+            int opcion = 0;
+            Console.WriteLine("------------");
+            Console.WriteLine("---/MENU/---");
+            Console.WriteLine("------------");
+            Console.WriteLine("1-Nivel Facil");
+            Console.WriteLine("2-Nivel Dificil");
+            Console.WriteLine("3-Nivel Extremo");
+            Console.WriteLine("4-Exit");
+            Console.WriteLine("Te Atreves ? : ");
+            opcion = int.Parse(Console.ReadLine());
+            return opcion;
+        }
+
+
+        static void MatrizFacil()
+        {
+            string[,] matriz = new string[4,4];
+            string[,] matrizInterogacion = new string[4,4];
+            string[,] matrizInterogacion1 = new string[4, 4];
+            string[,] matrizInterogacion2 = new string[4, 4];
+            string[,] matrizInterogacion3 = new string[4, 4];
+            string[,] matrizInterogacion4 = new string[4, 4];
+            string[,] matrizInterogacion5 = new string[4, 4];
+            string[,] matrizInterogacion6 = new string[4, 4];
+            string[,] matrizInterogacion7 = new string[4, 4];
+            Random alea = new Random();
+            int cont = 0;
+               
+                
+            string[] simbolo = new string[]{"A","B","A","B","C","D","C","D","E","F","E","F","G","H","G","H"};
+            int n = simbolo.Length;
+            for (int i = n -1 ; i >= 0; i--)
+            {
+                int j = alea.Next(i + 1);
+                string temp = simbolo[i];
+                simbolo[i] = simbolo[j];
+                simbolo[j] = temp;
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    matriz[i, j] = simbolo[cont];
+                    cont++;
+                }
+            }
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    matrizInterogacion[i, j] = "?   " ;
+
+                    Console.Write("{0}\t", matrizInterogacion[i, j]);
+                }
+                Console.Write("\n");
+            }
+
+            while (matrizInterogacion != matriz)
+            {
+                Console.WriteLine("Introduzca las posiciones :");
+                int x = int.Parse(Console.ReadLine());
+                int y = int.Parse(Console.ReadLine());
+                int x2 = int.Parse(Console.ReadLine());
+                int y2 = int.Parse(Console.ReadLine());
+                int x3 = x2;
+                int y3 = y2;
+                Console.Clear();
+
+                for (int j = 0; j < 4; j++)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (i == x && j == y)
+                        {
+
+                            matrizInterogacion[x, y] = matriz[x, y];
+                            matrizInterogacion[i, j] = matrizInterogacion[x, y];
+                        }
+                        if (i == x2 && j == y2)
+                        {
+                            matrizInterogacion[x2, y2] = matriz[x2, y2];
+                            matrizInterogacion[i, j] = matrizInterogacion[x2, y2];
+
+                        }
+
+
+                        Console.Write("{0}\t", matrizInterogacion[i, j]);
+
+
+                    }
+                    Console.Write("\n");
+                }
+                Console.ReadLine();
+
+                if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
+                {
+                    Console.Clear();
+
+                    for (int j = 0; j < 4; j++)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            matrizInterogacion1[i, j] = matrizInterogacion[i, j];
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
+                        }
+                        Console.Write("\n");
+                    }
+                }
+                if (matrizInterogacion[x, y] != matrizInterogacion[x2, y2])
+                {
+
+                    for (int j = 0; j < 4; j++)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (i == x && j == y && i == x2 && j == y2)
+                            {
+                                matrizInterogacion[i, j] = matrizInterogacion1[i, j];
+                            }
+                            else
+                            {
+                                matrizInterogacion[i, j] = "?   ";
+                            }
+                        }
+                        
+                        Console.Write("\n");
+                    }
+
+                }
+            }
+        }
+
+    }
+}
