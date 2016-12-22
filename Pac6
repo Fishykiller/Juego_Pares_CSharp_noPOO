@@ -13,7 +13,7 @@ namespace ConsoleApplication3
         {
             int opcion = 0;
             opcion = Menu();
-            Console.Clear();
+
 
             if (opcion == 1)
             {
@@ -106,7 +106,7 @@ namespace ConsoleApplication3
                 int y2 = int.Parse(Console.ReadLine());
                 int x3 = x2;
                 int y3 = y2;
-                Console.Clear();
+
 
                 for (int j = 0; j < 4; j++)
                 {
@@ -136,7 +136,7 @@ namespace ConsoleApplication3
 
                 if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
                 {
-                    Console.Clear();
+
 
                     for (int j = 0; j < 4; j++)
                     {
@@ -155,7 +155,7 @@ namespace ConsoleApplication3
                     {
                         for (int i = 0; i < 4; i++)
                         {
-                            if (i == x && j == y && i == x2 && j == y2)
+                            if (matrizInterogacion[i, j] == matrizInterogacion1[i, j])
                             {
                                 matrizInterogacion[i, j] = matrizInterogacion1[i, j];
                             }
@@ -164,13 +164,12 @@ namespace ConsoleApplication3
                                 matrizInterogacion[i, j] = "?   ";
                             }
                         }
-                        
+                          
                         Console.Write("\n");
                     }
 
                 }
             }
-        }
+}		
 
-    }
 }
