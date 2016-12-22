@@ -148,7 +148,7 @@ namespace ConsoleApplication3
                         {
                             matrizInterogacion1[i, j] = matrizInterogacion[i, j];
                             Console.Write("{0}\t", matrizInterogacion[i, j]);
-                          simbolo2[15]=matrizInterogacion[i, j];
+                          simbolo2[15]=matrizInterogacion1[i, j];
                         }
                         Console.Write("\n");
                     }
@@ -163,7 +163,7 @@ namespace ConsoleApplication3
                             if (matrizInterogacion[i, j] == matrizInterogacion1[i, j])
                             {
                                 matrizInterogacion[i, j] = matrizInterogacion1[i, j];
-                              simbolo2[15]=matrizInterogacion[i, j];
+                              simbolo2[15]=matrizInterogacion1[i, j];
                             }
                             else
                             {
