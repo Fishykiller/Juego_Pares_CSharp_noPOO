@@ -58,16 +58,11 @@ namespace ConsoleApplication3
             string[,] matriz = new string[4,4];
             string[,] matrizInterogacion = new string[4,4];
             string[,] matrizInterogacion1 = new string[4, 4];
-            string[,] matrizInterogacion2 = new string[4, 4];
-            string[,] matrizInterogacion3 = new string[4, 4];
-            string[,] matrizInterogacion4 = new string[4, 4];
-            string[,] matrizInterogacion5 = new string[4, 4];
-            string[,] matrizInterogacion6 = new string[4, 4];
-            string[,] matrizInterogacion7 = new string[4, 4];
             Random alea = new Random();
             int cont = 0;
           	int cont2 = 0;
-               
+          			
+   
                 
             string[] simbolo = new string[]{"A","B","A","B","C","D","C","D","E","F","E","F","G","H","G","H"};
           	string[] simbolo2 = new string[16];
@@ -98,16 +93,25 @@ namespace ConsoleApplication3
                 }
                 Console.Write("\n");
             }
+          
+          
 
             while (simbolo2[15] != simbolo[15])
             {
-                Console.WriteLine("Introduzca las posiciones :");
-                int x = int.Parse(Console.ReadLine());
-                int y = int.Parse(Console.ReadLine());
-                int x2 = int.Parse(Console.ReadLine());
-                int y2 = int.Parse(Console.ReadLine());
-                int x3 = x2;
-                int y3 = y2;
+              	int x=-1;
+          			int y=-1;
+          			int x2=-1;
+          			int y2=-1;
+                
+              while (x>3 || x<0 || y>3 ||y<0 || x2>3 || x2<0 || y2>3 ||y2<0){
+              
+                Console.WriteLine("Introduzca las posiciones entre 0 y 3 :");
+               x = int.Parse(Console.ReadLine());
+                y = int.Parse(Console.ReadLine());
+                x2 = int.Parse(Console.ReadLine());
+                y2 = int.Parse(Console.ReadLine());
+              }
+                
               	cont2++;
 
 
