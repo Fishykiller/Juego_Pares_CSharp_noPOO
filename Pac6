@@ -135,6 +135,7 @@ namespace ConsoleApplication3
                     }
                     Console.Write("\n");
                 }
+              	Console.WriteLine("Press Enter");
                 Console.ReadLine();
 
                 if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
@@ -169,7 +170,6 @@ namespace ConsoleApplication3
                                 matrizInterogacion[i, j] = "?   ";
                             }
                           Console.Write("{0}\t", matrizInterogacion[i, j]);
-                          simbolo2[15]=matrizInterogacion[i, j];
                         }
                           
                         Console.Write("\n");
@@ -178,7 +178,7 @@ namespace ConsoleApplication3
                 }
 
             }
-                        Console.WriteLine(cont2);
+          Console.WriteLine("GANADO !! Solo has necesitado {0} intentos ! ",cont2);
           							Console.ReadLine();
          
 }		
