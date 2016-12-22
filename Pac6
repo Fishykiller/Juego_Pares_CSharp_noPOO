@@ -11,74 +11,91 @@ namespace ConsoleApplication3
     {
         static void Main(string[] args)
         {
+
             int opcion = 0;
-            opcion = Menu();
-
-
-            if (opcion == 1)
+            while (opcion != 4)
             {
-                MatrizFacil();
-                Console.WriteLine("Introduzca las posiciones :");
-                Console.ReadLine();
+                while (opcion > 4 || opcion < 1)
+                {
+                    opcion = Menu();
+                }
 
-            }
-            if (opcion == 2)
-            {
 
-            }
-            if (opcion == 3)
-            {
+                if (opcion == 1)
+                {
 
-            }
-            if (opcion == 4)
-            {
+                    MatrizFacil(MezclaFacil());
+     
 
+                }
+                if (opcion == 2)
+                {
+                    Matrizdificil(Mezcladificil());
+                }
+                if (opcion == 3)
+                {
+                    MatrizExtrem(MezclaExtrem());
+                }
+                if (opcion == 4)
+                {
+
+                }
             }
         }
+
 
 
         static int Menu()
         {
+            
             int opcion = 0;
-            Console.WriteLine("------------");
-            Console.WriteLine("---/MENU/---");
-            Console.WriteLine("------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("---/ELIGE TU NIVEL/---");
+            Console.WriteLine("----------------------");
             Console.WriteLine("1-Nivel Facil");
             Console.WriteLine("2-Nivel Dificil");
             Console.WriteLine("3-Nivel Extremo");
             Console.WriteLine("4-Exit");
-            Console.WriteLine("Te Atreves ? : ");
+            Console.WriteLine("Cual eliges ? : ");
             opcion = int.Parse(Console.ReadLine());
+            Console.Clear();
             return opcion;
+            
         }
 
 
-        static void MatrizFacil()
+
+        static string[] MezclaFacil()
         {
-            string[,] matriz = new string[4,4];
-            string[,] matrizInterogacion = new string[4,4];
-            string[,] matrizInterogacion1 = new string[4, 4];
+            string[] simbolo = new string[] { "A", "B", "A", "B", "C", "D", "C", "D", "E", "F", "E", "F", "G", "H", "G", "H" };
             Random alea = new Random();
-            int cont = 0;
-          	int cont2 = 0;
-          			
-   
-                
-            string[] simbolo = new string[]{"A","B","A","B","C","D","C","D","E","F","E","F","G","H","G","H"};
-          	string[] simbolo2 = new string[16];
             int n = simbolo.Length;
-            for (int i = n -1 ; i >= 0; i--)
+            for (int i = n - 1; i >= 0; i--)
             {
                 int j = alea.Next(i + 1);
                 string temp = simbolo[i];
                 simbolo[i] = simbolo[j];
                 simbolo[j] = temp;
+
             }
-            for (int j = 0; j < 4; j++)
+            return simbolo;
+        }
+
+
+
+        static void MatrizFacil(string[] array)
+        {
+                string[,] matriz = new string[4, 4];
+                string[,] matrizInterogacion = new string[4, 4];
+                string[,] matrizInterogacion1 = new string[4, 4];
+                int cont = 0;
+                int cont2 = 0;
+
+                for (int j = 0; j < 4; j++)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    matriz[i, j] = simbolo[cont];
+                    matriz[i, j] = array[cont];
                     cont++;
                 }
             }
@@ -87,32 +104,36 @@ namespace ConsoleApplication3
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    matrizInterogacion[i, j] = "?   " ;
+                    matrizInterogacion[i, j] = "?   ";
 
                     Console.Write("{0}\t", matrizInterogacion[i, j]);
                 }
                 Console.Write("\n");
             }
-          
-          
 
-            while (simbolo2[15] != simbolo[15])
+
+            while (matriz[0,0]!= matrizInterogacion1[0,0] || matriz[0, 1] != matrizInterogacion1[0, 1] || matriz[0, 2] != matrizInterogacion1[0, 2] || matriz[0, 3] != matrizInterogacion1[0, 3] || matriz[1, 0] != matrizInterogacion1[1, 0] || matriz[1, 1] != matrizInterogacion1[1, 1] || matriz[1, 2] != matrizInterogacion1[1, 2] || matriz[1, 3] != matrizInterogacion1[1, 3] || matriz[2, 0] != matrizInterogacion1[2, 0] || matriz[2, 1] != matrizInterogacion1[2, 1] || matriz[2, 2] != matrizInterogacion1[2, 2] || matriz[2, 3] != matrizInterogacion1[2, 3] || matriz[3, 0] != matrizInterogacion1[3, 0] || matriz[3, 1] != matrizInterogacion1[3, 1] || matriz[3, 2] != matrizInterogacion1[3, 2] || matriz[3, 3] != matrizInterogacion1[3, 3] )
             {
-              	int x=-1;
-          			int y=-1;
-          			int x2=-1;
-          			int y2=-1;
-                
-              while (x>3 || x<0 || y>3 ||y<0 || x2>3 || x2<0 || y2>3 ||y2<0){
-              
-                Console.WriteLine("Introduzca las posiciones entre 0 y 3 :");
-               x = int.Parse(Console.ReadLine());
-                y = int.Parse(Console.ReadLine());
-                x2 = int.Parse(Console.ReadLine());
-                y2 = int.Parse(Console.ReadLine());
-              }
-                
-              	cont2++;
+                int x = -1;
+                int y = -1;
+                int x2 = -1;
+                int y2 = -1;
+
+                while (x > 3 || x < 0 || y > 3 || y < 0 || x2 > 3 || x2 < 0 || y2 > 3 || y2 < 0 || (x==x2 && y==y2))
+                {
+
+                    Console.WriteLine("Introduzca posiciones diferentes entre 0 y 3 :");
+                    Console.WriteLine("Introduzca numero de fila para la primera posicion:");
+                    x = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de fila para la segunda posicion:");
+                    x2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y2 = int.Parse(Console.ReadLine());
+                }
+
+                cont2++;
 
 
                 for (int j = 0; j < 4; j++)
@@ -130,6 +151,7 @@ namespace ConsoleApplication3
                             matrizInterogacion[x2, y2] = matriz[x2, y2];
                             matrizInterogacion[i, j] = matrizInterogacion[x2, y2];
 
+
                         }
 
 
@@ -139,12 +161,12 @@ namespace ConsoleApplication3
                     }
                     Console.Write("\n");
                 }
-              	Console.WriteLine("Press Enter");
+                Console.WriteLine("Press Enter");
                 Console.ReadLine();
+                Console.Clear();
 
                 if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
                 {
-
 
                     for (int j = 0; j < 4; j++)
                     {
@@ -152,10 +174,12 @@ namespace ConsoleApplication3
                         {
                             matrizInterogacion1[i, j] = matrizInterogacion[i, j];
                             Console.Write("{0}\t", matrizInterogacion[i, j]);
-                          simbolo2[15]=matrizInterogacion1[i, j];
+                          
+                            
                         }
                         Console.Write("\n");
                     }
+                    
                 }
                 if (matrizInterogacion[x, y] != matrizInterogacion[x2, y2])
                 {
@@ -167,23 +191,322 @@ namespace ConsoleApplication3
                             if (matrizInterogacion[i, j] == matrizInterogacion1[i, j])
                             {
                                 matrizInterogacion[i, j] = matrizInterogacion1[i, j];
-                              simbolo2[15]=matrizInterogacion1[i, j];
                             }
                             else
                             {
                                 matrizInterogacion[i, j] = "?   ";
                             }
-                          Console.Write("{0}\t", matrizInterogacion[i, j]);
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
                         }
-                          
+
                         Console.Write("\n");
                     }
 
                 }
 
             }
-          Console.WriteLine("GANADO !! Solo has necesitado {0} intentos ! ",cont2);
-          							Console.ReadLine();
-         
-}		
+            Console.WriteLine("GANADO !! Solo has necesitado {0} intentos ! ", cont2);
+            Console.ReadLine();
+            Menu();
+
+        }
+
+
+
+        static string[] Mezcladificil()
+        {
+            string[] array2 = new string[] { "A", "B", "A", "B", "C", "D", "C", "D", "E", "F", "E", "F", "G", "H", "G", "H", "I", "J", "I", "J"};
+            Random alea = new Random();
+            int n = array2.Length;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                int j = alea.Next(i + 1);
+                string temp = array2[i];
+                array2[i] = array2[j];
+                array2[j] = temp;
+
+            }
+            return array2;
+        }
+
+
+
+        static void Matrizdificil(string[] array2)
+        {
+            string[,] matriz = new string[5, 4];
+            string[,] matrizInterogacion = new string[5, 4];
+            string[,] matrizInterogacion1 = new string[5, 4];
+            int cont = 0;
+            int cont2 = 0;
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    matriz[i, j] = array2[cont];
+                    cont++;
+                }
+            }
+
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    matrizInterogacion[i, j] = "?   ";
+
+                    Console.Write("{0}\t", matrizInterogacion[i, j]);
+                }
+                Console.Write("\n");
+            }
+
+
+            while (matriz[0, 0] != matrizInterogacion1[0, 0] || matriz[0, 1] != matrizInterogacion1[0, 1] || matriz[0, 2] != matrizInterogacion1[0, 2] || matriz[0, 3] != matrizInterogacion1[0, 3] || matriz[1, 0] != matrizInterogacion1[1, 0] || matriz[1, 1] != matrizInterogacion1[1, 1] || matriz[1, 2] != matrizInterogacion1[1, 2] || matriz[1, 3] != matrizInterogacion1[1, 3] || matriz[2, 0] != matrizInterogacion1[2, 0] || matriz[2, 1] != matrizInterogacion1[2, 1] || matriz[2, 2] != matrizInterogacion1[2, 2] || matriz[2, 3] != matrizInterogacion1[2, 3] || matriz[3, 0] != matrizInterogacion1[3, 0] || matriz[3, 1] != matrizInterogacion1[3, 1] || matriz[3, 2] != matrizInterogacion1[3, 2] || matriz[3, 3] != matrizInterogacion1[3, 3] || matriz[4, 0] != matrizInterogacion1[4, 0] || matriz[4, 1] != matrizInterogacion1[4, 1] || matriz[4, 2] != matrizInterogacion1[4, 2] || matriz[4, 3] != matrizInterogacion1[4, 3])
+            {
+                int x = -1;
+                int y = -1;
+                int x2 = -1;
+                int y2 = -1;
+
+                while (x > 4 || x < 0 || y > 3 || y < 0 || x2 > 4 || x2 < 0 || y2 > 3 || y2 < 0 || (x == x2 && y == y2))
+                {
+
+                    Console.WriteLine("Introduzca posiciones diferentes entre 0 y 4 (3 por las filas) :");
+                    Console.WriteLine("Introduzca numero de fila para la primera posicion:");
+                    x = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de fila para la segunda posicion:");
+                    x2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y2 = int.Parse(Console.ReadLine());
+                }
+
+                cont2++;
+
+
+                for (int j = 0; j < 4; j++)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (i == x && j == y)
+                        {
+
+                            matrizInterogacion[x, y] = matriz[x, y];
+                            matrizInterogacion[i, j] = matrizInterogacion[x, y];
+                        }
+                        if (i == x2 && j == y2)
+                        {
+                            matrizInterogacion[x2, y2] = matriz[x2, y2];
+                            matrizInterogacion[i, j] = matrizInterogacion[x2, y2];
+
+
+                        }
+
+
+                        Console.Write("{0}\t", matrizInterogacion[i, j]);
+
+
+                    }
+                    Console.Write("\n");
+                }
+                Console.WriteLine("Press Enter");
+                Console.ReadLine();
+                Console.Clear();
+
+                if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
+                {
+
+                    for (int j = 0; j < 4; j++)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            matrizInterogacion1[i, j] = matrizInterogacion[i, j];
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
+
+
+                        }
+                        Console.Write("\n");
+                    }
+
+                }
+                if (matrizInterogacion[x, y] != matrizInterogacion[x2, y2])
+                {
+
+                    for (int j = 0; j < 4; j++)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (matrizInterogacion[i, j] == matrizInterogacion1[i, j])
+                            {
+                                matrizInterogacion[i, j] = matrizInterogacion1[i, j];
+                            }
+                            else
+                            {
+                                matrizInterogacion[i, j] = "?   ";
+                            }
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
+                        }
+
+                        Console.Write("\n");
+                    }
+
+                }
+
+            }
+            Console.WriteLine("GANADO !! Solo has necesitado {0} intentos ! ", cont2);
+            Console.ReadLine();
+            Menu();
+
+        }
+
+
+
+        static string[] MezclaExtrem()
+        {
+            string[] array3 = new string[] { "A", "B", "A", "B", "C", "D", "C", "D", "E", "F", "E", "F", "G", "H", "G", "H", "I", "J", "I", "J","M","N","M","O","N","O","P","Q","P","Q" };
+            Random alea = new Random();
+            int n = array3.Length;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                int j = alea.Next(i + 1);
+                string temp = array3[i];
+                array3[i] = array3[j];
+                array3[j] = temp;
+
+            }
+            return array3;
+        }
+
+
+
+        static void MatrizExtrem(string[] array3)
+        {
+            string[,] matriz = new string[6, 5];
+            string[,] matrizInterogacion = new string[6, 5];
+            string[,] matrizInterogacion1 = new string[6, 5];
+            int cont = 0;
+            int cont2 = 0;
+
+            for (int j = 0; j < 5; j++)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    matriz[i, j] = array3[cont];
+                    cont++;
+                }
+            }
+
+            for (int j = 0; j < 5; j++)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    matrizInterogacion[i, j] = "?   ";
+
+                    Console.Write("{0}\t", matrizInterogacion[i, j]);
+                }
+                Console.Write("\n");
+            }
+
+
+            while (matriz[0, 0] != matrizInterogacion1[0, 0] || matriz[0, 1] != matrizInterogacion1[0, 1] || matriz[0, 2] != matrizInterogacion1[0, 2] || matriz[0, 3] != matrizInterogacion1[0, 3] || matriz[0, 4] != matrizInterogacion1[0, 4] || matriz[1, 0] != matrizInterogacion1[1, 0] || matriz[1, 1] != matrizInterogacion1[1, 1] || matriz[1, 2] != matrizInterogacion1[1, 2] || matriz[1, 3] != matrizInterogacion1[1, 3] || matriz[1, 4] != matrizInterogacion1[1, 4] || matriz[2, 0] != matrizInterogacion1[2, 0] || matriz[2, 1] != matrizInterogacion1[2, 1] || matriz[2, 2] != matrizInterogacion1[2, 2] || matriz[2, 3] != matrizInterogacion1[2, 3] || matriz[2, 4] != matrizInterogacion1[2, 4] || matriz[3, 0] != matrizInterogacion1[3, 0] || matriz[3, 1] != matrizInterogacion1[3, 1] || matriz[3, 2] != matrizInterogacion1[3, 2] || matriz[3, 3] != matrizInterogacion1[3, 3] || matriz[3, 4] != matrizInterogacion1[3, 4] || matriz[4, 0] != matrizInterogacion1[4, 0] || matriz[4, 1] != matrizInterogacion1[4, 1] || matriz[4, 2] != matrizInterogacion1[4, 2] || matriz[4, 3] != matrizInterogacion1[4, 3] || matriz[4, 4] != matrizInterogacion1[4, 4] || matriz[5, 0] != matrizInterogacion1[5, 0] || matriz[5, 1] != matrizInterogacion1[5, 1] || matriz[5, 2] != matrizInterogacion1[5, 2] || matriz[5, 3] != matrizInterogacion1[5, 3] || matriz[5, 4] != matrizInterogacion1[5, 4])
+            {
+                int x = -1;
+                int y = -1;
+                int x2 = -1;
+                int y2 = -1;
+
+                while (x > 5 || x < 0 || y > 4 || y < 0 || x2 > 5 || x2 < 0 || y2 > 4 || y2 < 0 || (x == x2 && y == y2))
+                {
+
+                    Console.WriteLine("Introduzca posiciones diferentes entre 0 y 5 (4 por las filas) :");
+                    Console.WriteLine("Introduzca numero de fila para la primera posicion:");
+                    x = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de fila para la segunda posicion:");
+                    x2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Introduzca numero de columna para la primera posicion:");
+                    y2 = int.Parse(Console.ReadLine());
+                }
+
+                cont2++;
+
+
+                for (int j = 0; j < 5; j++)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (i == x && j == y)
+                        {
+
+                            matrizInterogacion[x, y] = matriz[x, y];
+                            matrizInterogacion[i, j] = matrizInterogacion[x, y];
+                        }
+                        if (i == x2 && j == y2)
+                        {
+                            matrizInterogacion[x2, y2] = matriz[x2, y2];
+                            matrizInterogacion[i, j] = matrizInterogacion[x2, y2];
+
+
+                        }
+
+
+                        Console.Write("{0}\t", matrizInterogacion[i, j]);
+
+
+                    }
+                    Console.Write("\n");
+                }
+                Console.WriteLine("Press Enter");
+                Console.ReadLine();
+                Console.Clear();
+
+                if (matrizInterogacion[x, y] == matrizInterogacion[x2, y2])
+                {
+
+                    for (int j = 0; j < 5; j++)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            matrizInterogacion1[i, j] = matrizInterogacion[i, j];
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
+
+
+                        }
+                        Console.Write("\n");
+                    }
+
+                }
+                if (matrizInterogacion[x, y] != matrizInterogacion[x2, y2])
+                {
+
+                    for (int j = 0; j < 5; j++)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (matrizInterogacion[i, j] == matrizInterogacion1[i, j])
+                            {
+                                matrizInterogacion[i, j] = matrizInterogacion1[i, j];
+                            }
+                            else
+                            {
+                                matrizInterogacion[i, j] = "?   ";
+                            }
+                            Console.Write("{0}\t", matrizInterogacion[i, j]);
+                        }
+
+                        Console.Write("\n");
+                    }
+
+                }
+
+            }
+            Console.WriteLine("GANADO !! Solo has necesitado {0} intentos ! ", cont2);
+            Console.ReadLine();
+            Menu();
+
+        }
+
+
+    }
 }
